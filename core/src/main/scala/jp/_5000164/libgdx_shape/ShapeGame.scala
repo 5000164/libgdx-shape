@@ -5,12 +5,10 @@ import com.badlogic.gdx.graphics.{GL20, OrthographicCamera}
 import com.badlogic.gdx.{Game, Gdx, Screen}
 
 class ShapeGame extends Game {
-  var batch: SpriteBatch = _
-  var font: BitmapFont = _
+  lazy val batch = new SpriteBatch
+  lazy val font = new BitmapFont
 
   override def create() {
-    batch = new SpriteBatch()
-    font = new BitmapFont()
     setScreen(new TitleScreen(this))
   }
 
@@ -25,7 +23,7 @@ class ShapeGame extends Game {
 }
 
 class TitleScreen(game: ShapeGame) extends Screen {
-  val camera = new OrthographicCamera()
+  lazy val camera = new OrthographicCamera()
   camera.setToOrtho(false, 800, 480)
 
   override def render(delta: Float) {
